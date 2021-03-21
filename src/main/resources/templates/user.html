@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <title>User page</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+
+
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <ul class="navbar-nav mr-right">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+
+<div class="row w-100 ">
+    <div class="col-2 mt-2 pr-2" sec:authorize="hasRole('ROLE_ADMIN')">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical"
+             style="width: 103%">
+
+            <a class="nav-link" href="/admin">Admin</a>
+
+            <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-home"
+               role="tab" aria-controls="v-pills-profile" aria-selected="false">User</a>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="col-9 bg-light">
+    <div class="tab-content bg-light" id="v-pills-tabContent" style="width: 114%;">
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+             aria-labelledby="v-pills-home-tab" style=" height: 100vh;">
+            <h1 class="my-3 ml-3">User information-page</h1>
+            <div class="dropdown ml-3" style="width: 96%">
+
+                <div class="tab-content border rounded bg-white " id="myTabContent">
+                    <div class="tab-pane fade show active " id="home" role="tabpanel"
+                         aria-labelledby="home-tab">
+                        <h5 class="card-header">About user</h5>
+                        <div class="p-3">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Password</th>
+                                    <th scope="col">Role</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr th:each="user, state : ${users}">
+                                    <th scope="row" th:text="${user.id}">ID</th>
+                                    <td th:text="${user.username}"> Name</td>
+                                    <td th:text="${user.password}"> Password</td>
+                                    <td>  <span th:each="userRole:${user.roles}"
+                                                th:if="${userRole.getAuthority().startsWith('ROLE_')}"
+                                                th:text="${userRole.getAuthority().replaceFirst('ROLE_', ' ')}"></span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+
+        </div>
+    </div>
+
+</div>
+</div>
+</body>
+</html>
