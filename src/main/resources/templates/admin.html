@@ -13,15 +13,6 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
 
-    <span class="navbar-brand">
-    <b><span th:with="auth=${#authentication.getPrincipal()}" th:text="${auth.email}"></span></b>
-    <span> with roles: </span>
-    <span th:each="authority : ${#authentication.getAuthorities()}"
-          th:if="${authority.getAuthority().startsWith('ROLE_')}"
-          th:text="${authority.getAuthority().replaceFirst('ROLE_', '')}">
-    </span>
-        </span>
-
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
         </ul>
@@ -74,9 +65,6 @@
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">LastName</th>
-                                        <th scope="age">Age</th>
-                                        <th scope="col">Email</th>
                                         <th scope="col">Role</th>
                                         <th scope="col">Edit</th>
                                         <th scope="col">Delete</th>
@@ -96,15 +84,6 @@
                                     <div class="form-group text-center">
                                         <label class="font-weight-bold " for="InputName">First name</label>
                                         <input type="text" class="form-control" id="InputName">
-
-                                        <label class="font-weight-bold" for="InputLastName">Last name</label>
-                                        <input type="text" class="form-control" id="InputLastName">
-
-                                        <label class="font-weight-bold" for="InputAge">Age</label>
-                                        <input type="number" class="form-control" id="InputAge">
-
-                                        <label class="font-weight-bold" for="InputEmail">Email address</label>
-                                        <input type="email" class="form-control" id="InputEmail">
 
                                         <label class="font-weight-bold" for="InputPassword">Password</label>
                                         <input type="password" class="form-control" id="InputPassword" required="true">
@@ -154,21 +133,6 @@
                                 <div class="form-group text-center">
                                     <label for="name" class="col-form-label font-weight-bold">Name</label>
                                     <input type="text" class="form-control" id="name" name="name" value=" "/>
-                                </div>
-
-                                <div class="form-group text-center">
-                                    <label for="lastName" class="col-form-label font-weight-bold">Last name</label>
-                                    <input type="text" class="form-control" id="lastName" name="lastName" value=" "/>
-                                </div>
-
-                                <div class="form-group text-center">
-                                    <label for="age" class="col-form-label font-weight-bold">Age</label>
-                                    <input type="text" class="form-control" id="age" name="age" value=" "/>
-                                </div>
-
-                                <div class="form-group text-center">
-                                    <label for="email" class="col-form-label font-weight-bold">Email</label>
-                                    <input type="text" class="form-control" id="email" name="email" value=" "/>
                                 </div>
 
                                 <div class="form-group text-center">
