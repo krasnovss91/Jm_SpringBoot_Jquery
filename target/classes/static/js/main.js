@@ -89,7 +89,7 @@ function loadUsersInformation() {
                     $.get(href, function (user, status) {
                         $('.myForm #id').val(user.id)
                         $('.myForm #name').val(user.name)
-                        $('.myForm #lastName').val(user.password)
+                        $('.myForm #password').val(user.password)
                     });
                     $('.myForm #exampleModal').modal();
                 });
