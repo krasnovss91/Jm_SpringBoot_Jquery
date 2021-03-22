@@ -120,7 +120,6 @@ function createTableRow(u) {
                 <td>${u.username}</td>
                 <td>${u.password}</td>
                 <td>${roleUser}</td>
-                <td>
                 <a href="/api/${u.id}"  class="btn btn-info eBtn">Edit</a>
                 </td>
                 <td>

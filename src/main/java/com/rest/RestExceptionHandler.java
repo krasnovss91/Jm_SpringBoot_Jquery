@@ -1,6 +1,5 @@
 package com.rest;
 
-import com.config.messages.codes.UserMessageCode;
 import com.dto.ErrorDto;
 import com.dto.exceptions.UserNotFoundByIdException;
 import com.service.MessageService;
@@ -15,7 +14,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.Locale;
 
-import static com.config.messages.codes.UserMessageCode.*;
+import static com.config.messages.codes.UserMessageCode.USER_NOT_FOUND_BY_ID_MESSAGE;
+import static com.config.messages.codes.UserMessageCode.USER_NOT_FOUND_BY_ID_TITLE;
 
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
