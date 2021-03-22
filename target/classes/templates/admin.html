@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/main.js}" type="text/javascript"></script>
+    <title>Title</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+
+
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <ul class="navbar-nav mr-right">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+
+<div class="row w-100 ">
+    <div class="col-2 mt-2 pr-2" sec:authorize="hasRole('ROLE_ADMIN')">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="width: 103%">
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+               aria-controls="v-pills-home" aria-selected="true">Admin</a>
+            <a class="nav-link"href="/user">User</a>
+        </div>
+    </div>
+
+    <div class="col-9 bg-light">
+        <div class="tab-content bg-light" id="v-pills-tabContent" style="width: 114%;">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                 aria-labelledby="v-pills-home-tab" style=" height: 100vh;">
+
+                <h1 class="my-3 ml-3">Admin panel</h1>
+
+                <div class="dropdown ml-3" style="width: 96%">
+
+                    <ul class="nav nav-tabs " id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                               aria-controls="home" aria-selected="true">User table</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                               aria-controls="profile" aria-selected="false">New User</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content border rounded bg-white " id="myTabContent">
+                        <div class="tab-pane fade show active " id="home" role="tabpanel"
+                             aria-labelledby="home-tab">
+                            <h5 class="card-header">All users</h5>
+                            <div class="p-3">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Password</th>
+                                        <th scope="col">Role</th>
+                                        <th scope="col">Edit</th>
+                                        <th scope="col">Delete</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr th:each="user : ${listUsers}">
+                                        <th scope="row" th:text="${user.id}">ID</th>
+                                        <td th:text="${user.username}"> Name</td>
+                                        <td th:text="${user.password}"> Password</td>
+                                        <td>  <span th:each="userRole:${user.roles}"
+                                                    th:if="${userRole.getAuthority().startsWith('ROLE_')}"
+                                                    th:text="${userRole.getAuthority().replaceFirst('ROLE_', ' ')}"></span>
+                                        </td>
+                                        <td>
+                                            <a th:href="@{'/admin/' + ${user.id}}" class="btn btn-info eBtn">
+                                                Edit
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger" th:href="@{/admin/delete(id=${user.getId()})}" th:method="POST">
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <h5 class="card-header">Add new user</h5>
+                            <div class="pt-4 mx-auto text-center" style="width: 30%">
+                                <form action="#" th:action="@{/admin/add}" th:object="${user}" method="POST">
+                                    <div class="form-group text-center">
+                                        <label class="font-weight-bold " for="exampleFormControlInput1">First
+                                            name</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                                               th:field="*{username}">
+
+
+
+                                        <label class="font-weight-bold"
+                                               for="exampleFormControlInput1">Password</label>
+                                        <input type="password" class="form-control"
+                                               id="exampleDropdownFormPassword1" th:field="*{password}">
+                                    </div>
+
+                                    <label class="font-weight-bold"
+                                           for="exampleFormControlInput1">Roles</label>
+                                    <input type="text" class="form-control"
+                                           id="exampleDropdownFormRoles" th:field="*{roles}">
+
+                                    <button type="submit" class="btn btn-success btn-lg mb-3 " value="Add">Add new
+                                        user
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            </div>
+        </div>
+
+        <div class="myForm">
+            <form th:action="@{/admin/edit}" th:object="${user}" method="post">
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content ">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit user</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body mx-auto" style="width: 55%">
+                                <div class="form-group text-center">
+                                    <label for="id" class="col-form-label font-weight-bold">ID</label>
+                                    <input type="text" class="form-control" id="id" name="id" value=" "/>
+                                </div>
+
+                                <div class="form-group text-center">
+                                    <label for="name" class="col-form-label font-weight-bold">Name</label>
+                                    <input type="text" class="form-control" id="name" name="username" value=" "/>
+                                </div>
+
+
+                                <div class="form-group text-center">
+                                    <label class="col-form-label font-weight-bold">Password</label>
+                                    <input type="password" class="form-control"
+                                           id="exampleDropdownFormPassword5" th:field="*{password}">
+                                </div>
+
+                                <div class="form-group text-center">
+                                    <label class="col-form-label font-weight-bold">Roles</label>
+
+                                    <select name="roles" id="roles" multiple>
+                                        <option value="ROLE_ADMIN">ADMIN</option>
+                                        <option value="ROLE_USER">USER</option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close"/>
+                                <input type="submit" class="btn btn-primary" value="Save"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,7 +1,5 @@
 package com.dto;
 
-import javax.xml.soap.SAAJResult;
-
 public class ErrorDto {
     private final String title;
 
