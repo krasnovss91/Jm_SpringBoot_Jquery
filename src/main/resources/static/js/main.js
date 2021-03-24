@@ -54,6 +54,7 @@ $(document).ready(function () {
         .then(() => $("#user_auto_table_body").append(createAuTableRow(obj)))).catch(error => {
         console.log(error);
     });
+
 });
 
 function openTabById(tab) {
@@ -88,8 +89,9 @@ function loadUsersInformation() {
                     let href = $(this).attr('href');
                     $.get(href, function (user, status) {
                         $('.myForm #id').val(user.id)
-                        $('.myForm #name').val(user.username)
+                        $('.myForm #name').val(user.name)
                         $('.myForm #password').val(user.password)
+
                     });
                     $('.myForm #exampleModal').modal();
                 });
@@ -117,9 +119,10 @@ function createTableRow(u) {
 
     return `<tr id="user_table_row_${u.id}">
                 <td>${u.id}</td>
-                <td>${u.username}</td>
-                <td>${u.password}</td>
+                <td>${u.name}</td>
+                 <td>${u.password}</td>
                 <td>${roleUser}</td>
+                <td>
                 <a href="/api/${u.id}"  class="btn btn-info eBtn">Edit</a>
                 </td>
                 <td>
@@ -136,7 +139,7 @@ function createAuTableRow(u) {
 
     return `<tr id="user_table_row_${u.id}">
                 <td>${u.id}</td>
-                <td>${user.username}</td>
+                <td>${u.name}</td>
                 <td>${u.password}</td>
                 <td>${roleUser}</td>
             </tr>`;
