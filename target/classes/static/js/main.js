@@ -6,7 +6,7 @@ $(document).ready(function () {
         event.preventDefault();
         let user = {
             id: $('#id').val(),
-            name: $('#InputName').val(),
+            username: $('#InputName').val(),
             password: $('#InputPassword').val(),
             roles: getRole('#SelectRole')
         };

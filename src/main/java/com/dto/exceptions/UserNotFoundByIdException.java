@@ -1,6 +1,6 @@
 package com.dto.exceptions;
 
-public class UserNotFoundByIdException extends BaseException {
+public class UserNotFoundByIdException extends Exception {
     private final long id;
 
     public UserNotFoundByIdException(long id) {

@@ -15,7 +15,7 @@ public class HomeController {
     public String adminPage() {
         return "admin";
     }
-    
+
     @GetMapping(value = "/user")
     public String userPage() {
         return "user";
