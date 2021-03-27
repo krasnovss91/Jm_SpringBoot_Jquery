@@ -30,7 +30,7 @@ $(document).ready(function () {
         event.preventDefault();
         let user = {
             id: $('#id').val(),
-            name: $('#name').val(),
+            username: $('#name').val(),
             password: $('#password').val(),
             roles: getRole('#SelectEditRole')
         };
@@ -48,7 +48,7 @@ $(document).ready(function () {
             loadUsersInformation();
         })
     });
-    //Отображение таблицы авторизованного пользователя
+    //Здесь только авторизованный пользователь. Поместить всех (без редактирования и удаления)
     fetch('api/user').then(result => result.json()
         .then(data => obj = data)
         .then(() => $("#user_auto_table_body").append(createAuTableRow(obj)))).catch(error => {
@@ -112,7 +112,6 @@ function getRole(address) {
 
 //генерация таблицы с юзерами
 function createTableRow(u) {
-    // console.log(u);
     const roleUser = u.roles.reduce(
         (sum, {role}) =>
             (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
