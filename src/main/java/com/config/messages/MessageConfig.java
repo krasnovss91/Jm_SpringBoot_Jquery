@@ -29,7 +29,7 @@ public class MessageConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public LocaleResolver localeResolver(@Qualifier("localeRu") @Autowired Locale localeRu,
+    public LocaleResolver localeResolver(@Qualifier("localeRu") @Autowired Locale localeRu, //что если переключить на localeEn?
                                          @Autowired List<Locale> supportedLocales) {
         AcceptHeaderLocaleResolver slr = new AcceptHeaderLocaleResolver();
         slr.setDefaultLocale(localeRu);

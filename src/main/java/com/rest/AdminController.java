@@ -1,15 +1,12 @@
 package com.rest;
 
-import com.dto.exceptions.UserNotFoundByIdException;
 import com.model.User;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.security.Principal;
-
 import java.util.List;
 
 
@@ -22,7 +19,7 @@ public class AdminController {
 
 
     @GetMapping("{id}")
-    public User getById(@PathVariable Long id) throws UserNotFoundByIdException {
+    public User getById(@PathVariable Long id) {
         return this.userService.getUserById(id);
     }
 
@@ -45,7 +42,7 @@ public class AdminController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteUsers(@PathVariable Long id) throws UserNotFoundByIdException{
+    public void deleteUsers(@PathVariable Long id) {
         userService.deleteUser(id);
     }
 
