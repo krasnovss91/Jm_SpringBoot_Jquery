@@ -55,6 +55,20 @@ $(document).ready(function () {
         console.log(error);
     });
 
+    function createTableRow(u) {
+    const roleUser = u.roles.reduce(
+        (sum, {role}) =>
+            (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
+
+    return `<tr id="user_table_row_${u.id}">
+                <td>${u.id}</td>
+                <td>${u.username}</td>
+                 <td>${u.password}</td>
+                <td>${roleUser}</td>
+            </tr>`;
+}
+
+
 });
 
 function openTabById(tab) {
