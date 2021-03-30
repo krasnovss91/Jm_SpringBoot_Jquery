@@ -54,31 +54,28 @@ $(document).ready(function () {
         .then(() => $("#user_auto_table_body").append(createAuTableRow(obj)))).catch(error => {
         console.log(error);
     });
-/*
-    function createTableRow(u) {
-    const roleUser = u.roles.reduce(
-        (sum, {role}) =>
-            (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
-
-    return `<tr id="user_table_row_${u.id}">
-                <td>${u.id}</td>
-                <td>${u.username}</td>
-                 <td>${u.password}</td>
-                <td>${roleUser}</td>
-            </tr>`;
-}
-    function loadUsersInformation() {
-
-        let UserTableBody = $("#user_table_body");
-        UserTableBody.children().remove();
-        fetch('api/users')
-            .then((response) => {
-                response.json().then(data => data.forEach(function (item, i, data) {
-                    //Создание строки с данными юзера
-                    let TableRow = createTableRow(item);
-                    UserTableBody.append(TableRow);
-
-*/
+    /*
+        function createTableRow(u) {
+        const roleUser = u.roles.reduce(
+            (sum, {role}) =>
+                (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
+        return `<tr id="user_table_row_${u.id}">
+                    <td>${u.id}</td>
+                    <td>${u.username}</td>
+                     <td>${u.password}</td>
+                    <td>${roleUser}</td>
+                </tr>`;
+    }
+        function loadUsersInformation() {
+            let UserTableBody = $("#user_table_body");
+            UserTableBody.children().remove();
+            fetch('api/users')
+                .then((response) => {
+                    response.json().then(data => data.forEach(function (item, i, data) {
+                        //Создание строки с данными юзера
+                        let TableRow = createTableRow(item);
+                        UserTableBody.append(TableRow);
+    */
 });
 
 function openTabById(tab) {
