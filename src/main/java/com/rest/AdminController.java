@@ -37,7 +37,6 @@ public class AdminController {
 
     @PutMapping("/update")
     public User updateUser(@RequestBody User user) {
-        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         return userService.saveUser(user);
     }
 

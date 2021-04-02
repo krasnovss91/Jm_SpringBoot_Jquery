@@ -37,7 +37,7 @@ $(document).ready(function () {
         console.log(user);
 
         fetch('api/update', {
-            method: 'PUT',
+            method: 'PUT',//отличается от POST только идеологически, изменяет уже существующие данные
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
@@ -48,7 +48,7 @@ $(document).ready(function () {
             loadUsersInformation();
         })
     });
-    //Здесь только авторизованный пользователь. Поместить всех (без редактирования и удаления)
+     //Отображение таблицы авторизованного пользователя
     fetch('api/user').then(result => result.json()
         .then(data => obj = data)
         .then(() => $("#user_auto_table_body").append(createAuTableRow(obj)))).catch(error => {
