@@ -36,7 +36,7 @@ $(document).ready(function () {
         };
         console.log(user);
 
-        fetch('api/update', {
+        fetch('api/edit', {
             method: 'PUT',//отличается от POST только идеологически, изменяет уже существующие данные
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'

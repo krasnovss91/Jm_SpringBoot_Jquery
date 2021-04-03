@@ -35,7 +35,7 @@ public class AdminController {
         return userService.saveUser(user);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/edit")
     public User updateUser(@RequestBody User user) {
         return userService.saveUser(user);
     }
