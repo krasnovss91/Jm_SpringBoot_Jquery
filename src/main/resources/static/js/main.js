@@ -129,7 +129,7 @@ function createTableRow(u) {
                 </td>
             </tr>`;
 }
-
+//таблица на вкладке user
 function createAuTableRow(u) {
 
     const roleUser = u.roles.reduce(

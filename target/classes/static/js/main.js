@@ -140,6 +140,6 @@ function createAuTableRow(u) {
                 <td>${u.id}</td>
                 <td>${u.username}</td>
                 <td>${u.password}</td>
-                <td>${roleUser}</td>
+                <td>${u.roles}</td>
             </tr>`;
 }
