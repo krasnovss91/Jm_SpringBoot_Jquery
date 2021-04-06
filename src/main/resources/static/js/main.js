@@ -32,7 +32,7 @@ $(document).ready(function () {
             id: $('#id').val(),
             username: $('#name').val(),
             password: $('#password').val(),
-            roles: getRole('#SelectEditRole')
+            roles: getRole('#SelectRole')
         };
         console.log(user);
 

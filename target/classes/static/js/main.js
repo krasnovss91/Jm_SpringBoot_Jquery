@@ -32,7 +32,7 @@ $(document).ready(function () {
             id: $('#id').val(),
             username: $('#name').val(),
             password: $('#password').val(),
-            roles: getRole('#SelectEditRole')
+            roles: getRole('#SelectRole')
         };
         console.log(user);
 
@@ -129,7 +129,7 @@ function createTableRow(u) {
                 </td>
             </tr>`;
 }
-
+//таблица на вкладке user
 function createAuTableRow(u) {
 
     const roleUser = u.roles.reduce(
@@ -140,6 +140,6 @@ function createAuTableRow(u) {
                 <td>${u.id}</td>
                 <td>${u.username}</td>
                 <td>${u.password}</td>
-                <td>${u.roles}</td>
+                <td>${roleUser}</td>
             </tr>`;
 }
