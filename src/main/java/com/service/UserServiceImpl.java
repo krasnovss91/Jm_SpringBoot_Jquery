@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
+
     Pattern BCRYPT_PATTERN = Pattern.compile("\\A\\$2a?\\$\\d\\d\\$[./0-9A-Za-z]{53}");
 
     @Autowired
@@ -33,7 +34,7 @@ public class UserServiceImpl implements UserService {
 
         String password = user.getPassword();
 
-        String encodedPassword = passwordEncoder.encode(password);
+        String encodedPassword = passwordEncoder.encode(password);//пароли не совпадают! добавить проверку
 
         user.setPassword(encodedPassword);
         userDao.saveUser(user);
@@ -97,3 +98,5 @@ public class UserServiceImpl implements UserService {
 
 
 }
+
+
