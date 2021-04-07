@@ -33,10 +33,10 @@ public class UserServiceImpl implements UserService {
         setUserRoles(user);
 
         String password = user.getPassword();
-
-        String encodedPassword = passwordEncoder.encode(password);//пароли не совпадают! добавить проверку
-
-        user.setPassword(encodedPassword);
+     //   String encodedPassword = passwordEncoder.encode(password);
+   //     user.setPassword(encodedPassword);
+        
+        user.setPassword(password);
         userDao.saveUser(user);
         return user;
     }
