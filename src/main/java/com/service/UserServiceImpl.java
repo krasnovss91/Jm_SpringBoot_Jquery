@@ -1,13 +1,13 @@
 package com.service;
 
+import com.dao.UserDao;
+import com.model.Role;
+import com.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.dao.UserDao;
-import com.model.Role;
-import com.model.User;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -32,11 +32,6 @@ public class UserServiceImpl implements UserService {
     public User saveUser(User user) {
         setUserRoles(user);
 
-        String password = user.getPassword();
-     //   String encodedPassword = passwordEncoder.encode(password);
-   //     user.setPassword(encodedPassword);
-        
-        user.setPassword(password);
         userDao.saveUser(user);
         return user;
     }
@@ -63,7 +58,7 @@ public class UserServiceImpl implements UserService {
             password = passwordEncoder.encode(password);
         }
 
-        if(!password.equals(userFromDB.getPassword())){
+        if (!password.equals(userFromDB.getPassword())) {
 
             user.setPassword(password);
         }
