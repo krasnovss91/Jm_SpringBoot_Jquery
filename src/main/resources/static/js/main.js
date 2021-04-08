@@ -111,7 +111,7 @@ function getRole(address) {
 }
 
 //генерация таблицы с юзерами
-function createTableRow(u) {
+function createTableRow(u) {// в roleUser всегда пишется USER
     const roleUser = u.roles.reduce(
         (sum, {role}) =>
             (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
