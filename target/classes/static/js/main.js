@@ -116,11 +116,12 @@ function createTableRow(u) {
         (sum, {role}) =>
             (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
 
+// <td>${roleUser}</td> - отображение полученных ролей
     return `<tr id="user_table_row_${u.id}">
                 <td>${u.id}</td>
                 <td>${u.username}</td>
                  <td>${u.password}</td>
-                <td>${roleUser}</td>
+                <td>${u.roles}</td> 
                 <td>
                 <a href="/api/${u.id}"  class="btn btn-info eBtn">Edit</a>
                 </td>
@@ -140,6 +141,6 @@ function createAuTableRow(u) {
                 <td>${u.id}</td>
                 <td>${u.username}</td>
                 <td>${u.password}</td>
-                <td>${roleUser}</td>
+                <td>${u.roles}</td>
             </tr>`;
 }

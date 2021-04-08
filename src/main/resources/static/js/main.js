@@ -115,8 +115,9 @@ function createTableRow(u) {
     const roleUser = u.roles.reduce(
         (sum, {role}) =>
             (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
-    
+
 // <td>${roleUser}</td> - отображение полученных ролей
+// <td>${u.roles}</td> - если так, в UI отображаются как object Object
     return `<tr id="user_table_row_${u.id}">
                 <td>${u.id}</td>
                 <td>${u.username}</td>
