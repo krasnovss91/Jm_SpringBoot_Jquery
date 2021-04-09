@@ -128,20 +128,28 @@ function createTableRow(u) {// проблема - в roleUser всегда пи�
                 <a id="${u.id}" href="/api/delete/${u.id}" class="btn btn-danger eBtnDel">Delete</a>
                 </td>
             </tr>`;
-    debugger
 }
 //таблица на вкладке user
 function createAuTableRow(u) {
+    let roleUser = null
+    if (u.roles == "ROLE_ADMIN") roleUser = "ADMIN"//return "ADMIN"
+    else roleUser ="USER"//return "USER"
 
+    /*
     const roleUser = u.roles.reduce(
-        (sum, {role}) =>
+        (sum, {role}) => {
+
             (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
 
+            if (sum + role == "ROLE_ADMIN") return "ADMIN"
+            else if (sum + role == "ROLE_USER") return "USER"
+        }
+
+     */
     return `<tr id="user_table_row_${u.id}">
                 <td>${u.id}</td>
                 <td>${u.username}</td>
                 <td>${u.password}</td>
                 <td>${roleUser}</td>
             </tr>`;
-    debugger
 }
