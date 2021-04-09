@@ -132,8 +132,8 @@ function createTableRow(u) {// проблема - в roleUser всегда пи�
 //таблица на вкладке user
 function createAuTableRow(u) {
     let roleUser = null
-    if (u.roles.authority == "ROLE_ADMIN") roleUser = "ADMIN"
-    else if (u.roles.authority == "ROLE_USER")  roleUser = "USER"
+    if (u.roles.name === "ROLE_ADMIN") roleUser = "ADMIN"
+    else if (u.roles.name === "ROLE_USER")  roleUser = "USER"
 
     /*
     const roleUser = u.roles.reduce(
