@@ -133,8 +133,11 @@ function createTableRow(u) {// проблема - в roleUser всегда пи�
 function createAuTableRow(u) {
 
     const roleUser = u.roles.reduce(
-        (sum, {role}) =>
-            (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
+        (sum, {role}) => {
+            //(sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
+            if (sum + role == "ROLE_ADMIN") return "ADMIN"
+            else if (sum + role == "ROLE_USER") return "USER"
+        }
 
     return `<tr id="user_table_row_${u.id}">
                 <td>${u.id}</td>

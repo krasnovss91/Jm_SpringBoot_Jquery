@@ -111,13 +111,11 @@ function getRole(address) {
 }
 
 //генерация таблицы с юзерами
-function createTableRow(u) {// в roleUser всегда пишется USER
+function createTableRow(u) {// проблема - в roleUser всегда пишется USER
     const roleUser = u.roles.reduce(
         (sum, {role}) =>
-            (sum + role == "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
+            (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
 
-// <td>${roleUser}</td> - отображение полученных ролей
-// <td>${u.roles}</td> - если так, в UI отображаются как object Object
     return `<tr id="user_table_row_${u.id}">
                 <td>${u.id}</td>
                 <td>${u.username}</td>
@@ -130,6 +128,7 @@ function createTableRow(u) {// в roleUser всегда пишется USER
                 <a id="${u.id}" href="/api/delete/${u.id}" class="btn btn-danger eBtnDel">Delete</a>
                 </td>
             </tr>`;
+    debugger
 }
 //таблица на вкладке user
 function createAuTableRow(u) {
@@ -144,4 +143,5 @@ function createAuTableRow(u) {
                 <td>${u.password}</td>
                 <td>${roleUser}</td>
             </tr>`;
+    debugger
 }
