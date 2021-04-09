@@ -135,6 +135,7 @@ function createAuTableRow(u) {
     if (u.roles.name === "ROLE_ADMIN") roleUser = "ADMIN"
     else if (u.roles.name === "ROLE_USER")  roleUser = "USER"
 
+    console.log(u.roles.name)
     /*
     const roleUser = u.roles.reduce(
         (sum, {role}) => {
