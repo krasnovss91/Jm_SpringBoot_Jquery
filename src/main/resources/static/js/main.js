@@ -111,19 +111,13 @@ function getRole(address) {
 }
 
 //генерация таблицы с юзерами
-function createTableRow(u) {//здесь работать с ролями также, как и на вкладке user. Вопрос-как организовать подсчёт юзеров
+function createTableRow(u) {
     let roleUser = null
     for (var i = 0; i < u.roles.length; i++) {
         if (u.roles[i].name === "ROLE_ADMIN") roleUser = "ADMIN"
         else if (u.roles[i].name === "ROLE_USER") roleUser = "USER"
     }
-    /*
-    const roleUser = u.roles.reduce(
-        (sum, {role}) =>
-            (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
-
-     */
-
+    
     return `<tr id="user_table_row_${u.id}">
                 <td>${u.id}</td>
                 <td>${u.username}</td>
@@ -141,7 +135,7 @@ function createTableRow(u) {//здесь работать с ролями так
 //таблица на вкладке user
 function createAuTableRow(u) {
     let roleUser = null
-    for (var i = 0; i < 1; i++) {
+    for (var i = 0; i < u.roles.length; i++) {
         if (u.roles[i].name === "ROLE_ADMIN") roleUser = "ADMIN"
         else if (u.roles[i].name === "ROLE_USER") roleUser = "USER"
     }
