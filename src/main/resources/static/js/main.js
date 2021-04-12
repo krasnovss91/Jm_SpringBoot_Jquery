@@ -111,7 +111,7 @@ function getRole(address) {
 }
 
 //генерация таблицы с юзерами
-function createTableRow(u) {// проблема - в roleUser всегда пишется USER
+function createTableRow(u) {//здесь работать с ролями также, как и на вкладке user. Вопрос-как организовать подсчёт юзеров
     const roleUser = u.roles.reduce(
         (sum, {role}) =>
             (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
