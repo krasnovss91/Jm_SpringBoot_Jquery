@@ -18,7 +18,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsServiceImpl userDetailsService;
-    private final LoginSuccessHandler loginSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -29,7 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public SecurityConfig(UserDetailsServiceImpl userDetailsService,
                           LoginSuccessHandler loginSuccessHandler) {
         this.userDetailsService = userDetailsService;
-        this.loginSuccessHandler = loginSuccessHandler;
     }
 
     @Autowired

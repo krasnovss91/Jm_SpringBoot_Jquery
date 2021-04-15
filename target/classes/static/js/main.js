@@ -48,7 +48,7 @@ $(document).ready(function () {
             loadUsersInformation();
         })
     });
-    //Отображение таблицы авторизованного пользователя
+    //Отображение таблицы авторизованного пользователя-вытаскивает только одного юзера
     fetch('api/user').then(result => result.json()
         .then(data => obj = data)
         .then(() => $("#user_auto_table_body").append(createAuTableRow(obj)))).catch(error => {
@@ -65,7 +65,7 @@ function loadUsersInformation() {
 
     let UserTableBody = $("#user_table_body");
     UserTableBody.children().remove();
-    fetch('api/users')
+    fetch('api/users')//вытаскивает всех юзеров
         .then((response) => {
             response.json().then(data => data.forEach(function (item, i, data) {
                 //Создание строки с данными юзера
@@ -117,12 +117,6 @@ function createTableRow(u) {
         if (u.roles[i].name === "ROLE_ADMIN") roleUser = "ADMIN"
         else if (u.roles[i].name === "ROLE_USER") roleUser = "USER"
     }
-    /*
-    const roleUser = u.roles.reduce(
-        (sum, {role}) =>
-            (sum + role === "ROLE_ADMIN" ? "ADMIN " : "USER "), '');
-
-     */
 
     return `<tr id="user_table_row_${u.id}">
                 <td>${u.id}</td>
