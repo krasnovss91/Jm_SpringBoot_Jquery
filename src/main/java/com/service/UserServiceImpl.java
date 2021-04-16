@@ -1,8 +1,6 @@
 package com.service;
 
-import com.dao.RoleDao;
 import com.dao.UserDao;
-import com.model.Role;
 import com.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 @Transactional
 @Service
@@ -69,18 +66,7 @@ public class UserServiceImpl implements UserService {
         }
         userDao.editUser(user);
     }
- /*
-    @Transactional
-    public void setUserRoles(User user) {//перенести это в отдельный сервис
-        user.setRoles(user
-                .getRoles()
-                .stream()
-                .map(role -> userDao.getRoleByName(role.getName()))
-                .collect(Collectors.toSet()));
-    }
-
-  */
-
+    
     @Override
     public void deleteUser(long id) {
         userDao.deleteUser(userDao.getUserById(id).getId());
@@ -91,12 +77,7 @@ public class UserServiceImpl implements UserService {
         return userDao.findUserByUsername(name);
 
     }
-/*
-    @Override
-    public Role getRoleByName(String name) {
-        return userDao.getRoleByName(name);
-    }//и этот метод тоже
- */
+
 
 }
 

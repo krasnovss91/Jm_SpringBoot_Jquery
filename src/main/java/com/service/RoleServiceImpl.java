@@ -10,9 +10,10 @@ import javax.transaction.Transactional;
 import java.util.stream.Collectors;
 
 @Service
-public class RoleServiceImpl implements RoleService{
+public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleDao roleDao;
+
     @Override
     @Transactional
     public void setUserRoles(User user) {
@@ -22,6 +23,7 @@ public class RoleServiceImpl implements RoleService{
                 .map(role -> roleDao.getRoleByName(role.getName()))
                 .collect(Collectors.toSet()));
     }
+
     @Override
     public Role getRoleByName(String name) {
         return roleDao.getRoleByName(name);

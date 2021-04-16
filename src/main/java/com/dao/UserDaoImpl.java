@@ -1,6 +1,5 @@
 package com.dao;
 
-import com.model.Role;
 import com.model.User;
 import org.springframework.stereotype.Repository;
 
@@ -52,15 +51,6 @@ public class UserDaoImpl implements UserDao {
         return entityManager.createQuery("SELECT e FROM User e", User.class).getResultList();
 
     }
-
-    /*
-    @Override
-    public Role getRoleByName(String role_name) {
-        return (Role) entityManager.createQuery("SELECT r FROM Role r WHERE r.name LIKE :role_name")// поправить этот запрос
-                .setParameter("role_name", role_name)
-                .getSingleResult();
-    }
-     */
 
     @Override
     public void editUser(User user) {
