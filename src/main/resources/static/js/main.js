@@ -11,7 +11,7 @@ $(document).ready(function () {
             roles: getRole('#SelectRole')
         };
         console.log(user);
-        fetch('api/add', {
+        fetch('api/add', {//здесь переделать маппинги в соответствии с серверной частью
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
