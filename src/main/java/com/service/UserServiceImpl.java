@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public void setUserRoles(User user) {
+    public void setUserRoles(User user) {//перенести это в отдельный сервис
         user.setRoles(user
                 .getRoles()
                 .stream()
@@ -90,7 +90,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Role getRoleByName(String name) {
         return userDao.getRoleByName(name);
-    }
+    }//и этот метод тоже
 
 
 }

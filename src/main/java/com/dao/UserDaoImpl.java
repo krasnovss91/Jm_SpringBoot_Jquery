@@ -10,8 +10,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
-
-//@Transactional
 @Repository
 public class UserDaoImpl implements UserDao {
 
@@ -19,7 +17,7 @@ public class UserDaoImpl implements UserDao {
     EntityManager entityManager;
 
     @Override
-    public User findUserByUsername(String username) {
+    public User findUserByUsername(String username) {//сделать для этого метода отдельный дао
 
         Query query = entityManager.createQuery("SELECT e FROM User e join fetch e.roles where e.username =: username");
 
@@ -57,8 +55,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Role getRoleByName(String role_name) {
-        return (Role) entityManager.createQuery("SELECT r FROM Role r WHERE r.name LIKE :role_name")
+    public Role getRoleByName(String role_name) {//этот запрос тоже перенести в отдельный дао
+        return (Role) entityManager.createQuery("SELECT r FROM Role r WHERE r.name LIKE :role_name")// поправить этот запрос
                 .setParameter("role_name", role_name)
                 .getSingleResult();
     }
