@@ -11,7 +11,7 @@ $(document).ready(function () {
             roles: getRole('#SelectRole')
         };
         console.log(user);
-        fetch('api/add', {//здесь переделать маппинги в соответствии с серверной частью
+        fetch('api/user/add', {//здесь переделать маппинги в соответствии с серверной частью
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
@@ -36,7 +36,7 @@ $(document).ready(function () {
         };
         console.log(user);
 
-        fetch('api/edit', {
+        fetch('api/user/edit', {
             method: 'PUT',//отличается от POST только идеологически, изменяет уже существующие данные
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
@@ -49,7 +49,7 @@ $(document).ready(function () {
         })
     });
     //Отображение таблицы авторизованного пользователя-вытаскивает только одного юзера
-    fetch('api/user').then(result => result.json()
+    fetch('api/user/findUser').then(result => result.json()
         .then(data => obj = data)
         .then(() => $("#user_auto_table_body").append(createAuTableRow(obj)))).catch(error => {
         console.log(error);
@@ -65,7 +65,7 @@ function loadUsersInformation() {
 
     let UserTableBody = $("#user_table_body");
     UserTableBody.children().remove();
-    fetch('api/users')//вытаскивает всех юзеров
+    fetch('api/user/findAllUsers')//вытаскивает всех юзеров
         .then((response) => {
             response.json().then(data => data.forEach(function (item, i, data) {
                 //Создание строки с данными юзера
@@ -125,10 +125,10 @@ function createTableRow(u) {
                  <td>${u.password}</td>
                 <td>${roleUser}</td> 
                 <td>
-                <a href="/api/${u.id}"  class="btn btn-info eBtn">Edit</a>
+                <a href="/api/user/${u.id}"  class="btn btn-info eBtn">Edit</a>
                 </td>
                 <td>
-                <a id="${u.id}" href="/api/delete/${u.id}" class="btn btn-danger eBtnDel">Delete</a>
+                <a id="${u.id}" href="/api/user/delete/${u.id}" class="btn btn-danger eBtnDel">Delete</a>
                 </td>
             </tr>`;
 }
