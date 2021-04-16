@@ -113,7 +113,7 @@ function getRole(address) {
 //генерация таблицы с юзерами
 function createTableRow(u) {
     let roleUser = null
-    for (var i = 0; i < u.roles.length; i++) {
+    for (var i = 0; i < u.roles.length; i++) {//одни и те же элементы записывает по 2 раза
         roleUser = u.roles[i].name
         roleUser = roleUser + " " + u.roles[i].name
      //   if (u.roles[i].name === "ROLE_ADMIN") roleUser = "ADMIN"
