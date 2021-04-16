@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("api/user")//маппинг исправить на api/user/..
+@RequestMapping("api/user")
 public class AdminController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class AdminController {
         return this.userService.getUserById(id);
     }
 
-    @GetMapping("/findAllUsers")//findAllUsers
+    @GetMapping("/findAllUsers")
     public List<User> findAllUsers() {
         List<User> list = userService.getAllUsers();
         return list;
@@ -45,7 +45,7 @@ public class AdminController {
         userService.deleteUser(id);
     }
 
-    @GetMapping("/findUser")//findUser
+    @GetMapping("/findUser")
     public User userData(Principal principal) {
         return userService.findUserByName(principal.getName());
     }
