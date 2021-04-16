@@ -112,8 +112,9 @@ function getRole(address) {
 
 //генерация таблицы с юзерами
 function createTableRow(u) {
-    let roleUser = null//мешается этот null! 
+    let roleUser = null
     for (var i = 0; i < u.roles.length; i++) {
+        roleUser = u.roles[i].name
         roleUser = roleUser + " " + u.roles[i].name
      //   if (u.roles[i].name === "ROLE_ADMIN") roleUser = "ADMIN"
       //  else if (u.roles[i].name === "ROLE_USER") roleUser = "USER"
