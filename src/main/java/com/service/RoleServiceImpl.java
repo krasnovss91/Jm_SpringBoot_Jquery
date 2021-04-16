@@ -5,17 +5,17 @@ import com.model.Role;
 import com.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleDao roleDao;
 
     @Override
-    @Transactional
     public void setUserRoles(User user) {
         user.setRoles(user
                 .getRoles()
