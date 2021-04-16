@@ -116,6 +116,7 @@ function createTableRow(u) {
     for (var i = 0; i < u.roles.length; i++) {
         if (u.roles[i].name === "ROLE_ADMIN") roleUser = "ADMIN"
         else if (u.roles[i].name === "ROLE_USER") roleUser = "USER"
+       // else if(u.roles[i].name ==="ROLE_ADMIN" && u.roles[i].name === "ROLE_USER") roleUser ="ADMIN, USER"
     }
 
     return `<tr id="user_table_row_${u.id}">
@@ -138,6 +139,7 @@ function createAuTableRow(u) {
     for (var i = 0; i < u.roles.length; i++) {
         if (u.roles[i].name === "ROLE_ADMIN") roleUser = "ADMIN"
         else if (u.roles[i].name === "ROLE_USER") roleUser = "USER"
+       // else if(u.roles[i].name ==="ROLE_ADMIN" && u.roles[i].name === "ROLE_USER") roleUser ="ADMIN, USER"
     }
 
     return `<tr id="user_table_row_${u.id}">
