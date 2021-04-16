@@ -12,7 +12,7 @@ public class RoleDaoImpl implements RoleDao{
     EntityManager entityManager;
     @Override
     public Role getRoleByName(String role_name) {
-        return (Role) entityManager.createQuery("SELECT r FROM Role r WHERE r.name LIKE :role_name")// поправить этот запрос
+        return (Role) entityManager.createQuery("SELECT r FROM Role r WHERE r.name =: role_name")
                 .setParameter("role_name", role_name)
                 .getSingleResult();
     }
