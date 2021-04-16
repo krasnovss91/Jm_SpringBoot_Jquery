@@ -35,7 +35,7 @@ public class UserDaoImpl implements UserDao {
     public void saveUser(User user) {
 
         if (user.getUsername() != null) {
-            entityManager.persist(user);
+            entityManager.persist(user);//PersistentObjectException
         }
 
     }
