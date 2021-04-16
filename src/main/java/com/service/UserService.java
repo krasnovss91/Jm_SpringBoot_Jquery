@@ -19,8 +19,8 @@ public interface UserService {
 
     User findUserByName(String name);
 
-    Role getRoleByName(String name);
+  //  Role getRoleByName(String name);
 
-    public void setUserRoles(User user);
+   // public void setUserRoles(User user);
 
 }

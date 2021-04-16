@@ -18,6 +18,6 @@ public interface UserDao {
 
     void deleteUser(long id);
 
-    Role getRoleByName(String name);
+    //Role getRoleByName(String name);
 
 }

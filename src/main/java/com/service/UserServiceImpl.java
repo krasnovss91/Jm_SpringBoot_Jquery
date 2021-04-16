@@ -1,5 +1,6 @@
 package com.service;
 
+import com.dao.RoleDao;
 import com.dao.UserDao;
 import com.model.Role;
 import com.model.User;
@@ -19,6 +20,9 @@ public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
 
+    @Autowired
+    private RoleService roleService;
+
     Pattern BCRYPT_PATTERN = Pattern.compile("\\A\\$2a?\\$\\d\\d\\$[./0-9A-Za-z]{53}");
 
     @Autowired
@@ -31,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user) {
-        setUserRoles(user);
+        roleService.setUserRoles(user);
 
         userDao.saveUser(user);
         return user;
@@ -50,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void editUser(User user) {
-        setUserRoles(user);
+        roleService.setUserRoles(user);
         String password = user.getPassword();
         User userFromDB = userDao.getUserById(user.getId());
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -65,7 +69,7 @@ public class UserServiceImpl implements UserService {
         }
         userDao.editUser(user);
     }
-
+ /*
     @Transactional
     public void setUserRoles(User user) {//перенести это в отдельный сервис
         user.setRoles(user
@@ -75,6 +79,7 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toSet()));
     }
 
+  */
 
     @Override
     public void deleteUser(long id) {
@@ -86,12 +91,12 @@ public class UserServiceImpl implements UserService {
         return userDao.findUserByUsername(name);
 
     }
-
+/*
     @Override
     public Role getRoleByName(String name) {
         return userDao.getRoleByName(name);
     }//и этот метод тоже
-
+ */
 
 }
 
