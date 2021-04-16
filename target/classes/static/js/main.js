@@ -11,7 +11,7 @@ $(document).ready(function () {
             roles: getRole('#SelectRole')
         };
         console.log(user);
-        fetch('api/user/add', {//здесь переделать маппинги в соответствии с серверной частью
+        fetch('api/user/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
@@ -113,9 +113,10 @@ function getRole(address) {
 //генерация таблицы с юзерами
 function createTableRow(u) {
     let roleUser = null
-    for (var i = 0; i < u.roles.length; i++) {
-        if (u.roles[i].name === "ROLE_ADMIN") roleUser = "ADMIN"
-        else if (u.roles[i].name === "ROLE_USER") roleUser = "USER"
+    for (var i = 1; i < u.roles.length; i++) {
+        roleUser = roleUser + u.roles[i].name
+     //   if (u.roles[i].name === "ROLE_ADMIN") roleUser = "ADMIN"
+      //  else if (u.roles[i].name === "ROLE_USER") roleUser = "USER"
        // else if(u.roles[i].name ==="ROLE_ADMIN" && u.roles[i].name === "ROLE_USER") roleUser ="ADMIN, USER"
     }
 
