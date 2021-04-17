@@ -3,7 +3,6 @@ package com.service;
 import com.dao.RoleDao;
 import com.model.Role;
 import com.model.User;
-import com.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,8 +13,7 @@ import java.util.stream.Collectors;
 @Transactional
 public class RoleServiceImpl implements RoleService {
     @Autowired
-   // private RoleDao roleDao;
-    RoleRepository roleRepository;
+    private RoleDao roleDao;
 
     @Override
     public void setUserRoles(User user) {
@@ -28,7 +26,6 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role getRoleByName(String name) {
-        return roleRepository.findByRole(name);
+        return roleDao.getRoleByName(name);
     }
-
 }
