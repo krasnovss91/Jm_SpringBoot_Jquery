@@ -2,6 +2,7 @@ package com.service;
 
 import com.dao.UserDao;
 import com.model.User;
+import com.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,7 +16,9 @@ import java.util.regex.Pattern;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao;
+  //  private UserDao userDao;
+    @Autowired
+    UserRepository userRepository;
 
     @Autowired
     private RoleService roleService;
