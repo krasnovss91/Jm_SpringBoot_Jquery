@@ -37,7 +37,8 @@ public class AdminController {
 
     @PutMapping("/edit")
     public ResponseEntity<User> updateUser(@RequestBody User user) {
-        return new ResponseEntity<User>(userService.saveUser(user), HttpStatus.OK);
+        userService.editUser(user);
+        return new ResponseEntity<User>(HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
