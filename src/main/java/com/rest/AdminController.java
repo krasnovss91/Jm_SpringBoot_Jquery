@@ -3,8 +3,10 @@ package com.rest;
 import com.model.User;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
 import java.security.Principal;
 import java.util.List;
@@ -20,8 +22,10 @@ public class AdminController {
 //вместо юзера возвращать запрос целиком
  //ResponceEntity.ok().head().body()
     @GetMapping("{id}")
-    public User getById(@PathVariable Long id) {
-        return this.userService.getUserById(id);
+    public ResponseEntity<User> getById(@PathVariable Long id) {
+
+        //return this.userService.getUserById(id);
+        return new ResponseEntity<User>(this.userService.getUserById(id),HttpStatus.OK);
     }
 
     @GetMapping("/findAllUsers")
