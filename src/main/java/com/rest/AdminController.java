@@ -35,9 +35,10 @@ public class AdminController {
     }
 
     @PostMapping("/add")
-    public User newUser(@RequestBody User user) {
+    public ResponseEntity<User> newUser(@RequestBody User user) {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        return userService.saveUser(user);
+        //return userService.saveUser(user);
+        return new ResponseEntity<User>(userService.saveUser(user),HttpStatus.OK);
     }
 
     @PutMapping("/edit")
