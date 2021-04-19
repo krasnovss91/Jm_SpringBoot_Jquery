@@ -52,8 +52,9 @@ public class AdminController {
     }
 
     @GetMapping("/findUser")
-    public User userData(Principal principal) {
-        return userService.findUserByName(principal.getName());
+    public ResponseEntity<User> userData(Principal principal) {
+        //return userService.findUserByName(principal.getName());
+        return new ResponseEntity<User>(userService.findUserByName(principal.getName()),HttpStatus.OK);
     }
 
 }
