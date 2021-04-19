@@ -33,8 +33,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveUser(User user) {
         roleService.setUserRoles(user);
-
-        userDao.saveUser(user);
+        userDao.editUser(user);
         return user;
     }
 
