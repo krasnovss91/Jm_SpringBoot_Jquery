@@ -17,7 +17,8 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-
+//вместо юзера возвращать запрос целиком
+ //ResponceEntity.ok().head().body()
     @GetMapping("{id}")
     public User getById(@PathVariable Long id) {
         return this.userService.getUserById(id);
