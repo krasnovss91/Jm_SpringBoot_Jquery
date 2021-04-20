@@ -118,7 +118,8 @@ function createTableRow(u) {
     //    roleUser = roleUser + " " + u.roles[i].name
         if (u.roles[i].name === "ROLE_ADMIN") roleUser = "ADMIN"
         else if (u.roles[i].name === "ROLE_USER") roleUser = "USER"
-       continue
+      if(u.roles[i++].name === null)
+          continue
         if (u.roles[i++].name === "ROLE_ADMIN") roleUser = roleUser + " " + "ADMIN"
         else if (u.roles[i++].name === "ROLE_USER") roleUser = roleUser + " " + "USER"
     }
