@@ -32,7 +32,6 @@ public class UserDaoImpl implements UserDao {
 
     }
 
-    //@Transactional
     @Override
     public void saveUser(User user) {
 
