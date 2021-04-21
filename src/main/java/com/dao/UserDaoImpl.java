@@ -2,7 +2,6 @@ package com.dao;
 
 import com.model.User;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -59,14 +58,12 @@ public class UserDaoImpl implements UserDao {
         if (user.getId() != 0) {
             entityManager.merge(user);
         }
-
     }
 
     @Override
     public void deleteUser(long id) {
 
         User userToBeDeleted = getUserById(id);
-
         if (userToBeDeleted != null) {
             entityManager.remove(userToBeDeleted);
         }

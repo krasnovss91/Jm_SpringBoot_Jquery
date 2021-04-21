@@ -113,17 +113,9 @@ function getRole(address) {
 //генерация таблицы с юзерами
 function createTableRow(u) {
     let roleUser = null
-    //for (var i = 0; i < u.roles.length; i++) {// .map - ?
         roleUser = u.roles.map(function (role){
            return  role.name
         });
-     //   roleUser = u.roles[i].name
-      //  roleUser = roleUser + " " + u.roles[i].name
-
-      //  if (u.roles[i].name === "ROLE_ADMIN") roleUser = "ADMIN"
-    //    else if (u.roles[i].name === "ROLE_USER") roleUser = "USER"
-
-  //  }
 
     return `<tr id="user_table_row_${u.id}">
                 <td>${u.id}</td>
@@ -145,13 +137,7 @@ function createAuTableRow(u) {
     roleUser = u.roles.map(function (role){
         return  role.name
     });
-    /*
-    for (var i = 0; i < u.roles.length; i++) {
-        if (u.roles[i].name === "ROLE_ADMIN") roleUser = "ADMIN"
-        else if (u.roles[i].name === "ROLE_USER") roleUser = "USER"
 
-    }
-     */
 
     return `<tr id="user_table_row_${u.id}">
                 <td>${u.id}</td>
