@@ -73,12 +73,14 @@ function loadUsersInformation() {
                 UserTableBody.append(TableRow);
 
                 //Удаление юзера и столбца таблицы
+                //в 82 строке может возникнуть ошибка Failed to load resource: the server with a status 500
                 $('.eBtnDel').on('click', function (event) {
                     event.preventDefault();
                     let href = $(this).attr('href');
                     let id = $(this).attr('id');
                     console.log(id);
                     fetch(href, {method: 'DELETE'})
+                   // fetch(href)
                         .then(result => console.log(result))
                         .then(() => loadUsersInformation())
                 });
