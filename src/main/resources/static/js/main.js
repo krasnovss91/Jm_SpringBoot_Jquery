@@ -73,6 +73,7 @@ function loadUsersInformation() {
                 UserTableBody.append(TableRow);
 
                 //Удаление юзера и столбца таблицы
+                //в 81 строке может возникнуть ошибка Failed to load resource: the server with a status 500
                 $('.eBtnDel').on('click', function (event) {
                     event.preventDefault();
                     let href = $(this).attr('href');
@@ -131,6 +132,8 @@ function createTableRow(u) {
             </tr>`;
 }
 //при удалении таблица с новыми данными рисуется по 3 раза (но не при всяком разворачивании приложения)
+//дублируется событие createTableRow(u).
+
 
 //таблица на вкладке user
 function createAuTableRow(u) {
