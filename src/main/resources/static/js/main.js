@@ -83,7 +83,7 @@ function loadUsersInformation() {
                     //    .then(result => console.log(result))
                         .then(() => loadUsersInformation())
                 });
-
+//что если удаление вынести за пределы функции получения всех пользователей?
                 //Заполнение и создание модального окна
                 $('.eBtn').on('click', function (event) {
                     event.preventDefault();
