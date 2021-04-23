@@ -61,6 +61,20 @@ function openTabById(tab) {
     $('.nav-tabs a[href="#' + tab + '"]').tab('show');
 };
 
+/*
+function deleteUser(){
+    $('.eBtnDel').on('click', function (event) {
+        event.preventDefault();
+        let href = $(this).attr('href');
+        let id = $(this).attr('id');
+        // console.log(id);
+        fetch(href, {method: 'DELETE'})
+            //    .then(result => console.log(result))
+            .then(() => loadUsersInformation())
+    });
+}
+ */
+
 function loadUsersInformation() {
 
     let UserTableBody = $("#user_table_body");
@@ -74,16 +88,18 @@ function loadUsersInformation() {
 
                 //Удаление юзера и столбца таблицы
                 //в 82 строке может возникнуть ошибка Failed to load resource: the server with a status 500
+
                 $('.eBtnDel').on('click', function (event) {
                     event.preventDefault();
                     let href = $(this).attr('href');
-                    let id = $(this).attr('id');
+                   // let id = $(this).attr('id');
                    // console.log(id);
                     fetch(href, {method: 'DELETE'})
                     //    .then(result => console.log(result))
                         .then(() => loadUsersInformation())
                 });
 
+//что если удаление вынести за пределы функции получения всех пользователей?
                 //Заполнение и создание модального окна
                 $('.eBtn').on('click', function (event) {
                     event.preventDefault();
