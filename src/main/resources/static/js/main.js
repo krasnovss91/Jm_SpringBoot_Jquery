@@ -128,12 +128,14 @@ function createTableRow(u) {
                 <a href="/api/user/${u.id}"  class="btn btn-info eBtn">Edit</a>
                 </td>
                 <td>
+                <!---
                 <a id="${u.id}" href="/api/user/delete/${u.id}" class="btn btn-danger eBtnDel">Delete</a>
+                -->>
+               <a id="${u.id}" fetch() </a>
                 </td>
             </tr>`;
 }
-//при удалении таблица с новыми данными рисуется по 3 раза (но не при всяком разворачивании приложения)
-//дублируется событие createTableRow(u).
+
 
 
 //таблица на вкладке user
