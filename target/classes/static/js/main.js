@@ -78,9 +78,9 @@ function loadUsersInformation() {
                     event.preventDefault();
                     let href = $(this).attr('href');
                     let id = $(this).attr('id');
-                    console.log(id);
+                   // console.log(id);
                     fetch(href, {method: 'DELETE'})
-                        .then(result => console.log(result))
+                    //    .then(result => console.log(result))
                         .then(() => loadUsersInformation())
                 });
 
