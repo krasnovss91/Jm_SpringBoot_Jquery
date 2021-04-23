@@ -80,7 +80,6 @@ function loadUsersInformation() {
                     let id = $(this).attr('id');
                     console.log(id);
                     fetch(href, {method: 'DELETE'})
-                   // fetch(href)
                         .then(result => console.log(result))
                         .then(() => loadUsersInformation())
                 });
@@ -115,9 +114,9 @@ function getRole(address) {
 //генерация таблицы с юзерами
 function createTableRow(u) {
     let roleUser = null
-        roleUser = u.roles.map(function (role){
-           return  role.name
-        });
+    roleUser = u.roles.map(function (role) {
+        return role.name
+    });
 
     return `<tr id="user_table_row_${u.id}">
                 <td>${u.id}</td>
@@ -132,15 +131,13 @@ function createTableRow(u) {
                 </td>
             </tr>`;
 }
-//при удалении таблица с новыми данными рисуется по 3 раза (но не при всяком разворачивании приложения)
-//дублируется событие createTableRow(u).
 
 
 //таблица на вкладке user
 function createAuTableRow(u) {
     let roleUser = null
-    roleUser = u.roles.map(function (role){
-        return  role.name
+    roleUser = u.roles.map(function (role) {
+        return role.name
     });
 
 
