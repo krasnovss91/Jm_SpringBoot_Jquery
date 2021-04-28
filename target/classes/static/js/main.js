@@ -87,7 +87,7 @@ function loadUsersInformation() {
                 UserTableBody.append(TableRow);
 
                 //Удаление юзера и столбца таблицы
-                //в 82 строке может возникнуть ошибка Failed to load resource: the server with a status 500
+                // может возникнуть ошибка Failed to load resource: the server with a status 500
 
                 $('.eBtnDel').on('click', function (event) {
                     event.preventDefault();
@@ -99,7 +99,6 @@ function loadUsersInformation() {
                         .then(() => loadUsersInformation())
                 });
 
-//что если удаление вынести за пределы функции получения всех пользователей?
                 //Заполнение и создание модального окна
                 $('.eBtn').on('click', function (event) {
                     event.preventDefault();
