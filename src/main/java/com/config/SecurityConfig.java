@@ -59,5 +59,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user").access("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
                 .anyRequest().authenticated();
     }
+    /*
+        @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .csrf()
+                .disable()
+                .antMatcher("/**")
+                .authorizeRequests()
+                .antMatchers("/", "/index.html")
+                .permitAll()
+                .anyRequest()
+                .authenticated();
+    }
+     */
 
 }
