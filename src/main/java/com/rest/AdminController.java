@@ -52,4 +52,9 @@ public class AdminController {
         return new ResponseEntity<User>(userService.findUserByName(principal.getName()), HttpStatus.OK);
     }
 
+    @RequestMapping("/index")//здесь ловим юзера с гугл и суём в бд
+    public void getPrincipal(){
+
+    }
+
 }
