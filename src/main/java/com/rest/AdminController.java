@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 @RestController
 @RequestMapping("api/user")
 public class AdminController {
+    static Logger LOGGER;
 
     @Autowired
     private UserService userService;
@@ -60,6 +63,7 @@ public class AdminController {
         String password = random_number.toString();
              User user = new User(principal.getName(), password ,new Role("ROLE_USER"));//соберём нового юзера. Кроме имени, нужен ещё пароль и права доступа
              userService.saveUser(user);
+             LOGGER.log(Level.INFO,"Пароль нового пользователя:" + password);
     }
 
 }
