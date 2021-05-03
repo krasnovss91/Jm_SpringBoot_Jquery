@@ -54,8 +54,8 @@ public class AdminController {
 
     @RequestMapping("/index")//здесь ловим юзера с гугл и суём в бд
     public void getPrincipal(Principal principal){
-             //principal.getName();
              User user = new User(principal.getName(), );//соберём нового юзера. Кроме имени, нужен ещё пароль и права доступа
+             userService.saveUser(user);
     }
 
 }
