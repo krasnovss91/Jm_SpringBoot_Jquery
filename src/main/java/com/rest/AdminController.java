@@ -1,5 +1,6 @@
 package com.rest;
 
+import com.model.Role;
 import com.model.User;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,8 @@ public class AdminController {
 
     @RequestMapping("/index")//здесь ловим юзера с гугл и суём в бд
     public void getPrincipal(Principal principal){
-             User user = new User(principal.getName(), );//соберём нового юзера. Кроме имени, нужен ещё пароль и права доступа
+        //пароль можно сгенерировать случайным образом, но затем вывести в логи. Случайное целое двузначное число, затем превратим его в строку
+             User user = new User(principal.getName(), ,new Role("ROLE_USER"));//соберём нового юзера. Кроме имени, нужен ещё пароль и права доступа
              userService.saveUser(user);
     }
 
