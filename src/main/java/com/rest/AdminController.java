@@ -65,5 +65,5 @@ public class AdminController {
              userService.saveUser(user);
              LOGGER.log(Level.INFO,"Пароль нового пользователя:" + password);
     }
-
+//BeanDefinitionStoreException - похоже на ошибку при чтении файла свойств
 }

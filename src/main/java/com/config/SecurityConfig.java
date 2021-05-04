@@ -16,7 +16,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth
 
 @Configuration
 @EnableWebSecurity
-@EnableOAuth2Sso
+@EnableOAuth2Sso//добавлена аннотация, отвечающая за Oauth2
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsServiceImpl userDetailsService;
@@ -59,19 +59,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user").access("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
                 .anyRequest().authenticated();
     }
-    /*
-        @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf()
-                .disable()
-                .antMatcher("/**")
-                .authorizeRequests()
-                .antMatchers("/", "/index.html")
-                .permitAll()
-                .anyRequest()
-                .authenticated();
-    }
-     */
+
 
 }
