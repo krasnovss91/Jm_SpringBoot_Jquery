@@ -16,7 +16,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth
 
 @Configuration
 @EnableWebSecurity
-@EnableOAuth2Sso//добавлена аннотация, отвечающая за Oauth2
+//@EnableOAuth2Sso//добавлена аннотация, отвечающая за Oauth2
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsServiceImpl userDetailsService;
