@@ -55,7 +55,7 @@ public class AdminController {
     public ResponseEntity<User> userData(Principal principal) {
         return new ResponseEntity<User>(userService.findUserByName(principal.getName()), HttpStatus.OK);//Principal ловится здесь. Поместить его в бд
     }
-
+ /*
     @RequestMapping("/index")//здесь ловим юзера с гугл и суём в бд
     public void getPrincipal(Principal principal) {
         //пароль можно сгенерировать случайным образом, но затем вывести в логи. Случайное целое двузначное число, затем превратим его в строку
@@ -65,5 +65,7 @@ public class AdminController {
         userService.saveUser(user);
         LOGGER.log(Level.INFO, "Пароль нового пользователя:" + password);
     }
+
+  */
 
 }
