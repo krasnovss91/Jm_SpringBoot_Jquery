@@ -53,7 +53,11 @@ public class AdminController {
 
     @GetMapping("/findUser")
     public ResponseEntity<User> userData(Principal principal) {
-        return new ResponseEntity<User>(userService.findUserByName(principal.getName()), HttpStatus.OK);//Principal ловится здесь. Поместить его в бд
+        if(userService.findUserByName(principal.getName()) == null)
+        {
+            userService.saveUser();
+        }
+        return new ResponseEntity<User>(userService.findUserByName(principal.getName()), HttpStatus.OK);//Principal ловится здесь. Поместить его в бд, если его там нет
     }
  /*
     @RequestMapping("/index")//здесь ловим юзера с гугл и суём в бд
