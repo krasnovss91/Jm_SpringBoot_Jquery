@@ -53,11 +53,12 @@ public class AdminController {
 
     @GetMapping("/findUser")
     public ResponseEntity<User> userData(Principal principal) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         if(userService.findUserByName(principal.getName()) == null)
         {
             Integer random_number = 10 + (int) (Math.random() * 99);
             String password = random_number.toString();
-            User user = new User(principal.getName(), password, new Role("ROLE_USER"));
+            User user = new User(principal.getName(), passwordEncoder.encode(password), new Role("ROLE_USER"));
             userService.saveUser(user);
             LOGGER.log(Level.INFO, "Пароль нового пользователя:" + password);
         }
