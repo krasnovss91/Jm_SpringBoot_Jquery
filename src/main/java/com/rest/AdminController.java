@@ -51,7 +51,7 @@ public class AdminController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    @GetMapping("/findUser")
+    @GetMapping("/findUser")//метод, работающий с юзерской страницей
     public ResponseEntity<User> userData(Principal principal) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         if(userService.findUserByName(principal.getName()) == null)
