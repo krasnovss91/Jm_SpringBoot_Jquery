@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class HomeController {
 
-    @GetMapping(value = "/login") //как вариант- изменить маппинг здесь
+    @GetMapping(value = "/login_form") //как вариант- изменить маппинг здесь
     public String loginPage() {
         return "login";
     }
