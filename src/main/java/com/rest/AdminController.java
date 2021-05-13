@@ -65,17 +65,6 @@ public class AdminController {
         }
         return new ResponseEntity<User>(userService.findUserByName(principal.getName()), HttpStatus.OK);//Principal ловится здесь. Поместить его в бд, если его там нет
     }
- /*
-    @RequestMapping("/index")//здесь ловим юзера с гугл и суём в бд
-    public void getPrincipal(Principal principal) {
-        //пароль можно сгенерировать случайным образом, но затем вывести в логи. Случайное целое двузначное число, затем превратим его в строку
-        Integer random_number = 10 + (int) (Math.random() * 99);
-        String password = random_number.toString();
-        User user = new User(principal.getName(), password, new Role("ROLE_USER"));//соберём нового юзера. Кроме имени, нужен ещё пароль и права доступа
-        userService.saveUser(user);
-        LOGGER.log(Level.INFO, "Пароль нового пользователя:" + password);
-    }
 
-  */
 
 }
