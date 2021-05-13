@@ -58,9 +58,10 @@ public class AdminController {
         {
             Integer random_number = 10 + (int) (Math.random() * 99);
             String password = random_number.toString();
+            System.out.println("Пароль нового пользователя:" + password);
             User user = new User(principal.getName(), passwordEncoder.encode(password), new Role("ROLE_USER"));
             userService.saveUser(user);
-            LOGGER.log(Level.INFO, "Пароль нового пользователя:" + password);
+          //  LOGGER.log(Level.INFO, "Пароль нового пользователя:" + password);
         }
         return new ResponseEntity<User>(userService.findUserByName(principal.getName()), HttpStatus.OK);//Principal ловится здесь. Поместить его в бд, если его там нет
     }
