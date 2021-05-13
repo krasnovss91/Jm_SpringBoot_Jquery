@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 @RestController
 @RequestMapping("api/user")
 public class AdminController {
-    static Logger LOGGER;
+
 
     @Autowired
     private UserService userService;
@@ -51,7 +49,7 @@ public class AdminController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    @GetMapping("/findUser")//метод, работающий с юзерской страницей
+    @GetMapping("/findUser")
     public ResponseEntity<User> userData(Principal principal) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         if(userService.findUserByName(principal.getName()) == null)
@@ -61,9 +59,8 @@ public class AdminController {
             System.out.println("Пароль нового пользователя:" + password);
             User user = new User(principal.getName(), passwordEncoder.encode(password), new Role("ROLE_USER"));
             userService.saveUser(user);
-          //  LOGGER.log(Level.INFO, "Пароль нового пользователя:" + password);
         }
-        return new ResponseEntity<User>(userService.findUserByName(principal.getName()), HttpStatus.OK);//Principal ловится здесь. Поместить его в бд, если его там нет
+        return new ResponseEntity<User>(userService.findUserByName(principal.getName()), HttpStatus.OK);
     }
 
 
